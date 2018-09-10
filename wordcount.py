@@ -21,8 +21,19 @@ for line in file:
 
 
 # after we've gone through all lines in the input file, we print out the 
-# total counts for each word, where the words are sorted in alphabetic order
-for word, count in sorted(word_dict.items()):
+# total counts for each word, where the order is in descending order by count
+
+#sort first by the word in asscending order
+ordered_pairs = sorted(word_dict.items())
+#then resort by the count in descending order.  Assuming? that the alphabeetic 
+# order for keys is preserved if the count is the same
+ordered_pairs2 = sorted(ordered_pairs, 
+                       key = lambda pair: pair[1], 
+                       reverse = True)
+
+#ordered_pairs = sorted(word_dict.items())
+
+for (word, count) in ordered_pairs2:
     print(word, count)
 
 
