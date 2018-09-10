@@ -1,20 +1,27 @@
 # put your code here.
-def count_words(file_name):
-    word_dict = {}
+import sys 
 
-    file = open(file_name)
-    for line in file:
+#def count_words():
 
-        words = line.split()
+word_dict = {}
 
-        for word in words:
-            word = word.rstrip(",.-!?")
-            word_dict[word] = word_dict.get(word, 0) + 1
+file_name = sys.argv[1]
 
-    for word, count in word_dict.items():
-        print(word, count)
+file = open(file_name)
+for line in file:
+
+    words = line.split()
+
+    for word in words:
+        word = word.rstrip(",.-!?")
+        word = word.lower()
+        word_dict[word] = word_dict.get(word, 0) + 1
+
+
+for word, count in word_dict.items():
+    print(word, count)
 
 
 
-count_words('test.txt')
+#count_words('test.txt')
 #count_words('twain.txt')
